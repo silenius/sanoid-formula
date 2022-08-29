@@ -1,6 +1,6 @@
 {% from "sanoid/map.jinja" import sanoid with context %}
 
-require:
+include:
   - sanoid.install
 
 sanoid_delete_tabs:

@@ -2,7 +2,7 @@
 
 {% set sanoid = salt.pillar.get('sanoid') %}
 
-{% do sanoid.update(salt.slsutil.merge(defaults, sanoid.lookup)) %}
+{% do sanoid.update(salt.slsutil.merge(defaults, sanoid.get('lookup', {})) %}
 
 {% for dataset in salt.ini_manage.get_ini(sanoid.conf_file) %}
 

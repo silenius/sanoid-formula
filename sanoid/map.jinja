@@ -8,7 +8,7 @@
 
 {% if not dataset.startswith('template_') and not dataset in sanoid.datasets %}
 
-{% do sanoid.setdefault('sections_absent', set()).add(dataset) %}
+{% do sanoid.setdefault('sections_absent', []).append(dataset) %}
 
 {% endif %}
 

@@ -4,7 +4,7 @@
 
 {% do sanoid.update(salt.slsutil.merge(defaults, sanoid.get('lookup', {}))) %}
 
-{% for dataset in salt.ini_manage.get_ini(sanoid.conf_file) %}
+{% for dataset in salt.ini.get_ini(sanoid.conf_file) %}
 
 {% if not dataset.startswith('template_') and not dataset in sanoid.datasets %}
 

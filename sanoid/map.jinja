@@ -1,0 +1,15 @@
+{% import_yaml "sanoid/defaults.yaml" as defaults %}
+
+{% set sanoid = salt.pillar.get('sanoid') %}
+
+{% do sanoid.update(salt.slsutil.merge(defaults, sanoid.lookup)) %}
+
+{% for dataset in salt.ini_manage.get_ini(sanoid.conf_file) %}
+
+{% if not dataset.startswith('template_') and not dataset in sanoid.datasets %}
+
+{% do sanoid.setdefault('sections_absent', set()).add(dataset) %}
+
+{% endif %}
+
+{% endfor %}

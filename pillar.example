@@ -1,0 +1,6 @@
+sanoid:
+  datasets:
+    zroot/usr/home:
+      use_template: production
+      recursive: yes
+

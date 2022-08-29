@@ -1,0 +1,2 @@
+pkg: sanoid
+conf_file: /usr/local/etc/sanoid/sanoid.conf

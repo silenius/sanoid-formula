@@ -11,6 +11,7 @@ sanoid_delete_tabs:
     - require:
       - pkg: sanoid
 
+{% if sanoid.sections_absent is defined %}
 sanoid_sections_absent:
   ini.sections_absent:
     - name: {{ sanoid.conf_file }}
@@ -18,6 +19,7 @@ sanoid_sections_absent:
         {% for dataset in sanoid.sections_absent %}
         - {{ dataset }}
         {% endfor %}
+{% endif %}
 
 sanoid_options_present:
   ini.options_present:

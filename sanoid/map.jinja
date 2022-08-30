@@ -3,12 +3,13 @@
 {% set sanoid = salt.pillar.get('sanoid') %}
 
 {% do sanoid.update(salt.slsutil.merge(defaults, sanoid.get('lookup', {}))) %}
+{% do sanoid.update({'sections_absent': []}) %}
 
 {% for dataset in salt.ini.get_ini(sanoid.conf_file) %}
 
 {% if not dataset.startswith('template_') and not dataset in sanoid.datasets %}
 
-{% do sanoid.setdefault('sections_absent', []).append(dataset) %}
+{% do sanoid.sections_absent.append(dataset) %}
 
 {% endif %}
 

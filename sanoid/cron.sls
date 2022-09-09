@@ -2,4 +2,6 @@
 
 sanoid_cron:
   cron.present:
-    {{ sanoid.cron|yaml }}
+    {% for key, value in sanoid.cron.items() %}
+    - {{ key }}: {{ value }}
+    {% endfor %}

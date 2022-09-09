@@ -1,6 +1,7 @@
 sanoid:
-  datasets:
-    zroot/usr/home:
-      use_template: production
-      recursive: yes
+  sections:
+    - section: zroot/usr/home
+      properties:
+        use_template: production
+        recursive: yes
 

@@ -19,6 +19,8 @@ sanoid_sections_absent:
         {% for dataset in sanoid.sections_absent %}
         - {{ dataset }}
         {% endfor %}
+    - require_in:
+      - ini: sanoid_options_present
 {% endif %}
 
 sanoid_options_present:
@@ -26,9 +28,9 @@ sanoid_options_present:
     - name: {{ sanoid.conf_file }}
     - strict: True
     - sections:
-        {% for dataset, properties in sanoid.get('datasets', {}).items() %}
-        {{ dataset }}:
-          {{ properties|yaml }}
+        {% for entry in sanoid.get('sections', {}) %}
+        {{ entry.section }}:
+          {{ entry.properties|yaml }}
         {% endfor %}
     - require:
       - file: sanoid_delete_tabs

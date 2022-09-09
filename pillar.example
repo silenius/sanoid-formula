@@ -1,4 +1,7 @@
 sanoid:
+  lookup:
+    cron:
+      user: zsync
   sections:
     - section: zroot/usr/home
       properties:

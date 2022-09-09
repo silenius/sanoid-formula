@@ -1,2 +1,7 @@
 pkg: sanoid
 conf_file: /usr/local/etc/sanoid/sanoid.conf
+cron:
+  identifier: SYNCOID
+  name: TZ=UTC /usr/local/bin/sanoid --cron 
+  user: root
+

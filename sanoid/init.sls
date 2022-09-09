@@ -3,3 +3,4 @@
 include:
   - sanoid.install
   - sanoid.config
+  - sanoid.cron

@@ -4,6 +4,8 @@ cron:
   SANOID_TAKE_SNAPSHOTS:
     name: /usr/bin/lockf -s -k -t 1 /var/run/sanoid/cron-take.lock TZ=UTC /usr/local/bin/sanoid --take-snapshots 
     user: root
+    minute: "'*/15'"
   SANOID_PRUNE_SNAPSHOTS:
     name: /usr/bin/lockf -s -k -t 1 /var/run/sanoid/cron-prune.lock /usr/local/bin/sanoid --prune-snapshots
     user: root
+    minute: "'*/15'"

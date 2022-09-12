@@ -1,7 +1,9 @@
 {% from "sanoid/map.jinja" import sanoid with context %}
 
-sanoid_cron:
+{% for identifier,props in sanoid.cron.items() %}
+
+sanoid_cron_{{ identifier }}:
   cron.present:
-    {% for key, value in sanoid.cron.items() %}
-    - {{ key }}: {{ value }}
-    {% endfor %}
+    {{ props | yaml }}
+
+{% endfor %}

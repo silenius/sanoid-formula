@@ -1,7 +1,8 @@
 sanoid:
   lookup:
     cron:
-      user: zsync
+      SANOID_TAKE_SNAPSHOTS:
+        user: zsync
   sections:
     - section: zroot/usr/home
       properties:

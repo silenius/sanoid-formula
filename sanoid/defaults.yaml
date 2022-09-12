@@ -1,7 +1,9 @@
 pkg: sanoid
 conf_file: /usr/local/etc/sanoid/sanoid.conf
 cron:
-  identifier: SANOID
-  name: TZ=UTC /usr/local/bin/sanoid --cron 
-  user: root
-
+  SANOID_TAKE_SNAPSHOTS:
+    name: /usr/bin/lockf -s -k -t 1 /var/run/sanoid/cron-take.lock TZ=UTC /usr/local/bin/sanoid --cron 
+    user: root
+  SANOID_PRUNE_SNAPSHOTS:
+    name: /usr/bin/lockf -s -k -t 1 /var/run/sanoid/cron-prune.lock /usr/local/bin/sanoid --prune-snapshots
+    user: root

@@ -4,10 +4,10 @@ pkg: sanoid
 conf_file: /usr/local/etc/sanoid/sanoid.conf
 cron:
   SANOID_TAKE_SNAPSHOTS:
-    name: /usr/bin/lockf -s -k -t 1 {{ locks.SANOID_TAKE_SNAPSHOTS }} TZ=UTC /usr/local/bin/sanoid --take-snapshots 
+    name: /usr/bin/lockf -s -k -t 1 {{ locks.SANOID_TAKE_SNAPSHOTS }} /bin/sh -c "TZ=UTC /usr/local/bin/sanoid --take-snapshots"
     user: root
     minute: "'*/15'"
   SANOID_PRUNE_SNAPSHOTS:
-    name: /usr/bin/lockf -s -k -t 1 {{ locks.SANOID_PRUNE_SNAPSHOTS }} /usr/local/bin/sanoid --prune-snapshots
+    name: /usr/bin/lockf -s -k -t 1 {{ locks.SANOID_PRUNE_SNAPSHOTS }} /bin/sh -c "/usr/local/bin/sanoid --prune-snapshots"
     user: root
     minute: "'*/15'"

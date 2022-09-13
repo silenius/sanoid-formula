@@ -1,9 +1,4 @@
-{% load_yaml as locks %}
-
-SANOID_TAKE_SNAPSHOTS: /var/run/sanoid/cron-take.lock
-SANOID_PRUNE_SNAPSHOTS: /var/run/sanoid/cron-prune.lock
-
-{% endload %}
+{% import_yaml "sanoid/locks.yaml" as locks %}
 
 pkg: sanoid
 conf_file: /usr/local/etc/sanoid/sanoid.conf

@@ -1,0 +1,2 @@
+SANOID_TAKE_SNAPSHOTS: /var/run/sanoid/cron-take.lock
+SANOID_PRUNE_SNAPSHOTS: /var/run/sanoid/cron-prune.lock

@@ -2,6 +2,9 @@
 
 pkg: sanoid
 conf_file: /usr/local/etc/sanoid/sanoid.conf
+cache-dir: /var/cache/sanoid
+run-dir: /var/run/sanoid
+group: sanoid
 cron:
   SANOID_TAKE_SNAPSHOTS:
     name: /usr/bin/lockf -s -k -t 1 {{ locks.SANOID_TAKE_SNAPSHOTS }} /bin/sh -c "TZ=UTC /usr/local/bin/sanoid --take-snapshots"

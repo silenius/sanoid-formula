@@ -34,3 +34,16 @@ sanoid_options_present:
         {% endfor %}
     - require:
       - file: sanoid_delete_tabs
+
+{% for d in ('cache-dir', 'run-dir') %}
+
+sanoid_dir_{{ d }}:
+  file.directory:
+    - name: {{ d }}
+    - user: root
+    - group: {{ sanoid.group }}
+    - mode: 770
+    - require:
+      - pkg: sanoid
+
+{% endfor %}

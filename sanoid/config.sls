@@ -12,7 +12,7 @@ sanoid_conf:
     - contents: |
         {% for section, props in sanoid.sections|dictsort %}
         [{{ section }}]
-        {% for k,v in props|dictsort %}
+        {%- for k,v in props|dictsort %}
         {{ k }} = {{ v }}
         {%- endfor %}
         {% endfor %}

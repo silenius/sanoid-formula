@@ -39,7 +39,7 @@ sanoid_options_present:
 
 sanoid_dir_{{ d }}:
   file.directory:
-    - name: {{ d }}
+    - name: {{ sanoid[d] }}
     - user: root
     - group: {{ sanoid.group }}
     - mode: 770

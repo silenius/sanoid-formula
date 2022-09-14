@@ -14,7 +14,7 @@ sanoid_conf:
         [{{ section }}]
         {% for k,v in props|dictsort %}
         {{ k }} = {{ v }}
-        {% endfor %}
+        {%- endfor %}
         {% endfor %}
     - require:
       - pkg: sanoid

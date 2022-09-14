@@ -4,17 +4,5 @@
 {% do defaults.update({'locks': locks}) %}
 
 {% set sanoid = salt.pillar.get('sanoid') %}
-{% set sections = sanoid.sections|map(attribute='section')|list %}
 
 {% do sanoid.update(salt.slsutil.merge(defaults, sanoid.get('lookup', {}))) %}
-{% do sanoid.update({'sections_absent': []}) %}
-
-{% for dataset in salt.ini.get_ini(sanoid.conf_file) %}
-
-{% if not dataset.startswith('template_') and not dataset in sections %}
-
-{% do sanoid.sections_absent.append(dataset) %}
-
-{% endif %}
-
-{% endfor %}

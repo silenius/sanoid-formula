@@ -4,7 +4,7 @@ sanoid:
       SANOID_TAKE_SNAPSHOTS:
         user: zsync
   sections:
-    zroot/usr/home
+    zroot/usr/home:
       use_template: production
       recursive: yes
 

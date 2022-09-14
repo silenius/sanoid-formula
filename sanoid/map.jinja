@@ -1,8 +1,16 @@
-{% import_yaml "sanoid/defaults.yaml" as defaults %}
+{% import_yaml "sanoid/global.yaml" as globals %}
+{% import_yaml "sanoid/sections.yaml" as sections %}
 {% import_yaml "sanoid/locks.yaml" as locks %}
-
-{% do defaults.update({'locks': locks}) %}
 
 {% set sanoid = salt.pillar.get('sanoid') %}
 
-{% do sanoid.update(salt.slsutil.merge(defaults, sanoid.get('lookup', {}))) %}
+{% set defaults = salt.slsutil.merge({
+    'global': globals,
+    'sections': sections,
+    'locks': locks
+
+}, sanoid.lookup)
+
+{% do sanoid.update(salt.slsutil.merge(defaults.global, sanoid)) %}
+{% do sanoid.update(salt.slsutil.merge(defaults.sections, sanoid.sections)) %}
+{% do sanoid.update(salt.slsutil.merge(defaults.locks, sanoid.locks)) %}

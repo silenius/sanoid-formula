@@ -8,7 +8,7 @@ sanoid_conf:
     - name: {{ sanoid.conf_file }}
     - user: root
     - group: wheel
-    - mode: 640
+    - mode: 644
     - contents: |
         {% for section, props in sanoid.sections|dictsort %}
         [{{ section }}]

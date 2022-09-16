@@ -38,4 +38,4 @@ template_scripts:
 template_ignore:
   autoprune: no
   autosnap: no
-  monitor: n 
+  monitor: no 
